@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Repo Search</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>GitHub Repo Finder</h1>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for repositories..."
+      />
+      <button id="searchBtn">Search</button>
+
+      <div>
+        <h2>Trending Repositories</h2>
+        <select id="trendingPeriod">
+          <option value="day">Daily</option>
+          <option value="week">Weekly</option>
+          <option value="month">Monthly</option>
+        </select>
+        <button id="fetchTrendingBtn">Fetch Trending</button>
+      </div>
+
+      <div id="results"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub Repo Finder</h1>
+        <input type="text" id="searchInput" placeholder="Search for repositories...">
+        <button id="searchBtn">Search</button>
+
+        <div>
+            <h2>Trending Repositories</h2>
+            <select id="trendingPeriod">
+                <option value="day">Daily</option>
+                <option value="week">Weekly</option>
+                <option value="month">Monthly</option>
+            </select>
+            <button id="fetchTrendingBtn">Fetch Trending</button>
+        </div>
+
+        <div id="results">
+            <% if (error) { %>
+                <p class="error"><%= error %></p>
+            <% } else { %>
+                <% if (repos.length > 0) { %>
+                    <ul>
+                        <% repos.forEach(repo => { %>
+                            <li>
+                                <a href="<%= repo.html_url %>" target="_blank"><%= repo.name %></a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No repositories found.</p>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> -->
+
+<!-- Sources: -->
+<!-- 1. https://github.com/Kazunori-Kimura/enquete-webapp -->
+<!-- 2. https://medium.com/samsung-internet-dev/making-an-ar-game-with-aframe-529e03ae90cb -->
+<!-- 3. https://github.com/Sean-Briscoe/ApiVisualisation -->
