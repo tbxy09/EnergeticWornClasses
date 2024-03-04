@@ -39,8 +39,8 @@ app.get("/search", async (req, res) => {
         },
       },
     );
-
-    res.render("index", {
+    console.log(response.data.items);
+    res.json({
       repos: response.data.items,
       searchQuery,
     });

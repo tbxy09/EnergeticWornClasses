@@ -1,13 +1,19 @@
+// const { response } = require("express");
+currentPage = 1;
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const resultsContainer = document.getElementById("results");
 const fetchTrendingBtn = document.getElementById("fetchTrendingBtn");
 const trendingPeriod = document.getElementById("trendingPeriod");
-
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+prevBtn.addEventListener('click', () => { currentPage--; searchRepositories(); });
+nextBtn.addEventListener('click', () => { currentPage++; searchRepositories(); });
 searchBtn.addEventListener("click", searchRepositories);
 // fetchTrendingBtn.addEventListener("click", fetchTrendingRepositories);
 
 fetchTrendingBtn.addEventListener("click", () => {
+  console.log(trendingPeriod.value);
   const period = trendingPeriod.value;
   fetch(`/trending?period=${period}`)
     .then((response) => response.json())
@@ -21,18 +27,13 @@ async function searchRepositories() {
   // ...
   console.log(searchInput.value);
   try {
-    const response = await axios.get(
-      "https://3eb08793-7282-45f4-a54b-a1dd2ec4d7ee-00-6l5w4ftr49t3.janeway.replit.dev/search",
-      {
-        // Adjust if your server runs on a different port
-        params: {
-          q: searchInput,
-          page: currentPage,
-          per_page: pageSize,
-        },
-      },
-    );
-    renderResults(response.data.repos);
+    // compose the query string, page display
+    const query = searchInput.value;
+    const page = currentPage;
+    const page_size = 20;
+    response = await fetch(`/search?q=${query}&page=${page}&page_size=${page_size}`);
+    data = await response.json();
+    renderResults(data.repos);
     // ... rest of your handling logic
   } catch (error) {
     console.error("Error fetching data:", error);
