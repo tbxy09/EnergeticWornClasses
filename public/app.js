@@ -18,6 +18,7 @@ fetchTrendingBtn.addEventListener("click", () => {
   fetch(`/trending?period=${period}`)
     .then((response) => response.json())
     .then((data) => {
+      renderResults(data.repos, "trending")
       // Update the "results" section to display trending repos
     })
     .catch((error) => console.error("Error fetching trending:", error));

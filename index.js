@@ -85,7 +85,7 @@ app.get("/trending", async (req, res) => {
       sort: "stars",
       order: "desc",
     });
-
+    // console.log(response.data.items);
     res.json(response.data.items);
   } catch (error) {
     console.error("Error fetching trending:", error);
