@@ -18,7 +18,7 @@ fetchTrendingBtn.addEventListener("click", () => {
   fetch(`/trending?period=${period}`)
     .then((response) => response.json())
     .then((data) => {
-      renderResults(data.repos, "trending")
+      renderResults(data, "trending")
       // Update the "results" section to display trending repos
     })
     .catch((error) => console.error("Error fetching trending:", error));
@@ -34,7 +34,7 @@ async function searchRepositories() {
     const page_size = 20;
     response = await fetch(`/search?q=${query}&page=${page}&page_size=${page_size}`);
     data = await response.json();
-    renderResults(data.repos);
+    renderResults(data, "trending")
     // ... rest of your handling logic
   } catch (error) {
     console.error("Error fetching data:", error);
